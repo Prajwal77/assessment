@@ -17,8 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<String> getAll() {
-        productService.getAllProducts();
-        return ResponseEntity.ok("OK");
+    public ResponseEntity getAll() {
+        return ResponseEntity.ok(productService.getAllProducts().get());
     }
 }

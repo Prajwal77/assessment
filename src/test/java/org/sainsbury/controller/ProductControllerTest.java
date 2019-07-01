@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.sainsbury.service.ProductService;
+import org.sainsbury.vo.Products;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -24,7 +25,7 @@ public class ProductControllerTest {
 
     @Test
     public void getAll() {
-        Mockito.when(productService.getAllProducts()).thenReturn(Optional.empty());
+        Mockito.when(productService.getAllProducts()).thenReturn(Optional.ofNullable(new Products()));
 
         ResponseEntity<String> responseEntity = productController.getAll();
 
