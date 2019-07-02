@@ -30,7 +30,7 @@ public class ProductControllerTest {
     @Test
     public void getAll() {
         Mockito.when(productService.getAllProducts()).thenReturn(Optional.ofNullable(new Products()));
-        Mockito.when(responseBuilder.success(Mockito.anyList())).thenReturn(ResponseEntity.ok("OK"));
+        Mockito.when(responseBuilder.success(Mockito.any())).thenReturn(ResponseEntity.ok("OK"));
 
         ResponseEntity<String> responseEntity = productController.getAll();
 

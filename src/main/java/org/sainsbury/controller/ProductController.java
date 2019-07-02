@@ -20,6 +20,6 @@ public class ProductController {
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity getAll() {
-        return responseBuilder.success(productService.getAllProducts().get().getResults());
+        return responseBuilder.success(productService.getAllProducts());
     }
 }
