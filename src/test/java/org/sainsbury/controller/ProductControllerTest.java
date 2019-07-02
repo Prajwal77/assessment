@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.sainsbury.component.ResponseBuilder;
 import org.sainsbury.service.ProductService;
 import org.sainsbury.vo.Products;
 import org.springframework.http.HttpStatus;
@@ -20,12 +21,16 @@ public class ProductControllerTest {
     @Mock
     private ProductService productService;
 
+    @Mock
+    private ResponseBuilder responseBuilder;
+
     @InjectMocks
     private ProductController productController;
 
     @Test
     public void getAll() {
         Mockito.when(productService.getAllProducts()).thenReturn(Optional.ofNullable(new Products()));
+        Mockito.when(responseBuilder.success(Mockito.anyList())).thenReturn(ResponseEntity.ok("OK"));
 
         ResponseEntity<String> responseEntity = productController.getAll();
 

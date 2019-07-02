@@ -1,6 +1,7 @@
 package org.sainsbury.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.sainsbury.component.ResponseBuilder;
 import org.sainsbury.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     private final ProductService productService;
+    private final ResponseBuilder responseBuilder;
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity getAll() {
-        return ResponseEntity.ok(productService.getAllProducts().get());
+        return responseBuilder.success(productService.getAllProducts().get().getResults());
     }
 }
